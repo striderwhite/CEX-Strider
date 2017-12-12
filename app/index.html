@@ -26,11 +26,17 @@
 
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#!/viewMain"><i class="fa fa-btc" aria-hidden="true"></i>
+          <li class="nav-item">
+            <a class="nav-link" href="#!/Main">Main <i class="fa fa-btc" aria-hidden="true"></i>
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#!/Authenticate">Authenticate
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
         </ul>
       </div>
     </nav>
@@ -46,23 +52,24 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-
-
+  
   <!-- bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <!-- USING https://bootswatch.com/flatly/ -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/lux/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.2/flatly/bootstrap.min.css">
-  
-  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- crypto tings -->
+  <script src="bower_components/crypto-js/crypto-js.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
   <link rel="stylesheet" href="app.css">
   <script src="viewMain/viewMain.js"></script>
+  <script src="viewAuthenticate/viewAuthenticate.js"></script> 
 </body>
-
 </html>
