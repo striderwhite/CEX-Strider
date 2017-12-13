@@ -13,16 +13,16 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="UserID">User ID</label>
                     <div class="col-md-5">
-                        <input id="UserID" name="UserID" type="text" placeholder="up15859853" class="form-control input-md" required="">
+                        <input id="UserID" ng-model="Ctrl.userID" name="UserID" type="text" placeholder="up15859853" class="form-control input-md" required="">
 
                     </div>
                 </div>
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="apiSecret">API Secret</label>
+                    <label  class="col-md-4 control-label" for="apiSecret">API Secret</label>
                     <div class="col-md-5">
-                        <input id="apiSecret" name="apiSecret" type="text" placeholder="G7FD98G7D98G7D" class="form-control input-md" required="">
+                        <input ng-model="Ctrl.apiSecret" id="apiSecret" name="apiSecret" type="text" placeholder="G7FD98G7D98G7D" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="apiKey">API Key</label>
                     <div class="col-md-5">
-                        <input id="apiKey" name="apiKey" type="text" placeholder="KDG8F7DG8D67FG987DF" class="form-control input-md" required="">
+                        <input ng-model="Ctrl.apiKey" id="apiKey" name="apiKey" type="text" placeholder="KDG8F7DG8D67FG987DF" class="form-control input-md" required="">
 
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="Submit"></label>
                     <div class="col-md-4">
-                        <button id="Submit" name="Submit" class="btn btn-primary">Submit</button>
+                        <button ng-click="Ctrl.ValidateInfo()" id="Submit" name="Submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
 
@@ -50,8 +50,8 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" ng-show="Ctrl.signature">
     <div class="col-md-12">
-        <h3>Your unique api key </h3> <h6> {{Ctrl.signature}}</h6>
+        <h3>Your unique api signature </h3> <h6> {{Ctrl.signature}}</h6>
     </div>
 </div>

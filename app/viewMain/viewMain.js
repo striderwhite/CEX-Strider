@@ -7,12 +7,14 @@ angular.module('striderCEX.viewMain', ['ngRoute'])
     var vm = this;
     vm.updater;
     vm.ticker;
-   
+    vm.numberOfCoins = 1;
+    vm.profit;
     /* METHODS */
     /* Setup calling UPDATE */
     if (!angular.isDefined(vm.updater)){
       vm.updater = $interval(function () {
         vm.Update();
+        vm.GetProfit();
       }, 1500);
     }
 
@@ -43,6 +45,12 @@ angular.module('striderCEX.viewMain', ['ngRoute'])
     var message = GetNonce() + userID + apiKey;
 
     var signature = CryptoJS.HmacSHA256(message, apiSecret).toString(CryptoJS.enc.Hex).toUpperCase();
+
+    vm.GetProfit = GetProfit;
+    
+    function GetProfit(){
+      vm.profit = vm.ticker.last * vm.numberOfCoins; 
+    };
 
     console.log(signature);
 

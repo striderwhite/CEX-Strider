@@ -7,29 +7,73 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Highest Buy</td>
-                        <th scope="col">Lowest Sell</td>
-                            <th scope="col">High (24hr)</td>
-                                <th scope="col">Low (24hr)</td>
-                                    <th scope="col">Volume (24hr)</td>
-                                        <th scope="col">Timestamp</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{Ctrl.ticker.bid}}</td>
-                    <td> {{Ctrl.ticker.ask}}</td>
-                    <td> {{Ctrl.ticker.high}}</td>
-                    <td> {{Ctrl.ticker.low}}</td>
-                    <td> {{Ctrl.ticker.volume}}</td>
-                    <td> {{Ctrl.ticker.timestamp}}</td>
-                </tr>
-            </tbody>
-        </table>
+
+<div class="card text-white bg-primary m-3" style="width: 20rem;">
+    <div class="card-header">Simple Stats</div>
+    <div class="card-body">
+        <div> Highest Buy </div>
+        <div style="color:salmon">
+            <i class="fa fa-usd" aria-hidden="true"> </i> {{Ctrl.ticker.bid}} </div>
+        <div>Lowest Sell </div>
+        <div style="color:salmon">
+            <i class="fa fa-usd" aria-hidden="true"> </i> {{Ctrl.ticker.ask}}</div>
+        <div>High (24hr)</div>
+        <div style="color:salmon">
+            <i class="fa fa-usd" aria-hidden="true"> </i> {{Ctrl.ticker.high}}</div>
+        <div>Low (24hr)</div>
+        <div style="color:salmon">
+            <i class="fa fa-usd" aria-hidden="true"> </i> {{Ctrl.ticker.low}}</div>
+        <div>Volume (24hr) </div>
+        <div style="color:salmon">{{Ctrl.ticker.volume}}</div>
+        <div>Timestamp: </div>
+        <div style="color:salmon">{{Ctrl.ticker.timestamp}}</div>
     </div>
 </div>
+
+
+<div class="card text-white bg-primary m-3" style="width: 20rem;">
+    <div class="card-header">Profit Calculator</div>
+    <div class="card-body">
+        <h6>Number of Bitcoins</h6>
+        <input type="input" class="form-control" ng-model="Ctrl.numberOfCoins" value="1">
+        <p class="card-text"></p>
+        <h6>Sell value: </h6>
+        <h6 style="color:GREEN">
+            <i class="fa fa-usd" aria-hidden="true"> </i>{{Ctrl.profit}} USD</h6>
+        </p>
+    </div>
+</div>
+
+
+<div class="card text-white bg-primary m-3" style="width: 20rem;">
+    <div class="card-header">Current Orders</div>
+    <div class="card-body">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">
+                Order 1
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                Order 2
+            </a>
+            <a href="#" class="list-group-item list-group-item-action">
+                Order 3
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card text-white bg-secondary m-3" style="width: 20rem;">
+        <div class="card-header">Place Market Orders</div>
+        <div class="card-body">
+           Do some shit boi!!!
+        </div>
+    </div>
+
+    <div class="card text-white bg-secondary m-3" style="width: 20rem;">
+            <div class="card-header">Place Limit Orders</div>
+            <div class="card-body">
+               Do some shit boi!!!
+            </div>
+        </div>
+    
+    

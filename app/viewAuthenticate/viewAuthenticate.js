@@ -10,17 +10,49 @@ angular.module('striderCEX.viewAuthenticate', ['ngRoute'])
     vm.apiSecret;
     vm.userID;
     vm.message;
+    vm.lastNonce;
 
-    vm.apiKey = 'FAKEFAKEFAKEFAKE';
-    vm.apiSecret = 'FAKEFAKEFAKEFAKE';
-    vm.userID = 'upFAKEFAKEFAKE07';
+    vm.userID = 'up12f';
+    vm.apiSecret = 'all12f12f12ZjY';
+    vm.apiKey = 'FK12f12fos';
     vm.message = GetNonce() + vm.userID + vm.apiKey;
 
     
-    vm.signature = CryptoJS.HmacSHA256(vm.message,vm.apiSecret).toString(CryptoJS.enc.Hex).toUpperCase();
+    vm.GenerateSignature = GenerateSignature;
 
-    console.log(vm.signature);
     
+    function GenerateSignature () {
+      vm.lastNonce = GetNonce();
+      vm.message =  vm.lastNonce + vm.userID + vm.apiKey;
+      vm.signature = CryptoJS.HmacSHA256(vm.message,vm.apiSecret).toString(CryptoJS.enc.Hex).toUpperCase();
+    }
+
+    vm.ValidateInfo = function(){
+      GenerateSignature();
+
+      var url = 'https://cex.io/api/balance/';
+      var data = {
+        key : vm.apiKey,
+        signature : vm.signature,
+        nonce : vm.lastNonce
+      }
+
+      $http.post(url, data)
+      .success(function (data, status, headers, config) {
+        console.log("Response back");
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+      })
+      .error(function (data, status, header, config) {
+        console.log("Error");
+        console.log(data);
+      });
+
+
+    }
+
     return vm;
   }]);
 
