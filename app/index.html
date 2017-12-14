@@ -18,7 +18,8 @@
 
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">Strider CEX </i></a>
+      <a class="navbar-brand" href="#">Strider CEX </i>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
         aria-expanded="false" aria-label="Toggle navigation" style="">
         <span class="navbar-toggler-icon"></span>
@@ -27,15 +28,16 @@
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#!/Main">Main <i class="fa fa-btc" aria-hidden="true"></i>
+            <a class="nav-link" href="#!/Main">Main
+              <i class="fa fa-btc" aria-hidden="true"></i>
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="#!/Authenticate">Authenticate
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
+            <a class="nav-link" href="#!/Authenticate">Authenticate
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
 
         </ul>
       </div>
@@ -52,7 +54,7 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  
+
   <!-- bootstrap -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -65,12 +67,18 @@
   <!-- crypto tings -->
   <script src="bower_components/crypto-js/crypto-js.js"></script>
 
-  
+
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
+  <!-- CEX Service -->
+  <script src="services/cex-service.js"></script>
   <link rel="stylesheet" href="app.css">
   <script src="viewMain/viewMain.js"></script>
-  <script src="viewAuthenticate/viewAuthenticate.js"></script> 
+  <script src="viewAuthenticate/viewAuthenticate.js"></script>
+
+
 </body>
+
 </html>

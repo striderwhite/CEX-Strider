@@ -1,8 +1,13 @@
-<div class="row">
+
+
+
+<br>
+<h1>CEX.IO Api Authentication</h1>
+<h6>{{Ctrl.authStatusMessage}}</h6>
+<br>
+
+<div class="row" ng-hide="Ctrl.authSuccess">
     <div class="col-md-12">
-        <br>
-        <h1>CEX.IO Api Authentication</h1>
-        <br>
         <form class="form-horizontal">
             <fieldset>
 
@@ -50,8 +55,12 @@
     </div>
 </div>
 
-<div class="row" ng-show="Ctrl.signature">
-    <div class="col-md-12">
-        <h3>Your unique api signature </h3> <h6> {{Ctrl.signature}}</h6>
-    </div>
+<div class="row m-5" ng-show="Ctrl.authSuccess">
+        <div class="alert alert-dismissible alert-success">
+            <br><br>
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong> {{Ctrl.authStatusMessage}} </strong>
+                <br><br>
+                <h6>Return to main page</h6>
+         </div>
 </div>

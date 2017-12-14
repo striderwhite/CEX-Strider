@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('striderCEX.viewMain', ['ngRoute'])
-  .controller('ViewMainCtrl', ['$http', '$interval', function ($http, $interval) {
+  .controller('ViewMainCtrl', ['$http', '$interval', 'cexService', function ($http, $interval,cexService) {
 
     /* VARS */
     var vm = this;
@@ -9,6 +9,13 @@ angular.module('striderCEX.viewMain', ['ngRoute'])
     vm.ticker;
     vm.numberOfCoins = 1;
     vm.profit;
+
+
+    cexService.GetBalance().then(function(data){
+      vm.balance = data;
+    });
+
+
     /* METHODS */
     /* Setup calling UPDATE */
     if (!angular.isDefined(vm.updater)){
@@ -25,39 +32,15 @@ angular.module('striderCEX.viewMain', ['ngRoute'])
     vm.Update = function () {
 
       //  GET TICKER VALUE  =
-      $http({
-        method: 'GET',
-        url: 'https://cex.io/api/ticker/BTC/USD'
-      }).then(function successCallback(response) {
-        vm.ticker = response.data;
-        /* if(response.data.last > vm.ticker.last){vm.isUp=true;} else { vm.isUp=false;} */
-      }, function errorCallback(response) {
-        console.log("ERROR" + response);
+      cexService.GetTicker().then(function(data){
+        vm.ticker = data;
       });
-
-
     }
-
-    var apiKey = 'OgxD6vdPwKPkw2ciepZwGbVI';
-    var apiSecret = 'IgeIo7KyEPfKCMbLOkpc4MkNOV4';
-    var userID = 'up112311707';
-
-    var message = GetNonce() + userID + apiKey;
-
-    var signature = CryptoJS.HmacSHA256(message, apiSecret).toString(CryptoJS.enc.Hex).toUpperCase();
-
     vm.GetProfit = GetProfit;
     
     function GetProfit(){
-      vm.profit = vm.ticker.last * vm.numberOfCoins; 
+      vm.profit = vm.ticker.last * vm.balance.BTC.available; 
     };
-
-    console.log(signature);
 
     return vm;
   }]);
-
-
-function GetNonce() {
-  return Math.round((new Date()).getTime() / 1000);
-}

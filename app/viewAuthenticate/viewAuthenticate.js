@@ -1,62 +1,39 @@
 'use strict';
 
 angular.module('striderCEX.viewAuthenticate', ['ngRoute'])
-  .controller('ViewAuthenticateCtrl', ['$http', function ($http) {
+  .controller('ViewAuthenticateCtrl', ['$http', '$rootScope','cexService', function ($http, $rootScope, cexService) {
 
     /* VARS */
     var vm = this;
-    vm.signature;
-    vm.apiKey;
-    vm.apiSecret;
-    vm.userID;
-    vm.message;
-    vm.lastNonce;
+    vm.userID = "gasdgas";
+    vm.apiKey = "adgasgas";
+    vm.apiSecret = "asdgasgas";
+    vm.ValidateInfo = ValidateInfo;
+    vm.authSuccess = false;
+    vm.authStatusMessage = 'Waiting to login...';
+     
+    function ValidateInfo() {
+      //PLACE INFO INTO ROOT SCOPE
 
-    vm.userID = 'up12f';
-    vm.apiSecret = 'all12f12f12ZjY';
-    vm.apiKey = 'FK12f12fos';
-    vm.message = GetNonce() + vm.userID + vm.apiKey;
+      //define root scope object for API calls
+      $rootScope.APIInfo = {
+        userID: vm.userID,
+        apiKey: vm.apiKey,
+        apiSecret: vm.apiSecret
+      };
 
-    
-    vm.GenerateSignature = GenerateSignature;
-
-    
-    function GenerateSignature () {
-      vm.lastNonce = GetNonce();
-      vm.message =  vm.lastNonce + vm.userID + vm.apiKey;
-      vm.signature = CryptoJS.HmacSHA256(vm.message,vm.apiSecret).toString(CryptoJS.enc.Hex).toUpperCase();
-    }
-
-    vm.ValidateInfo = function(){
-      GenerateSignature();
-
-      var url = 'https://cex.io/api/balance/';
-      var data = {
-        key : vm.apiKey,
-        signature : vm.signature,
-        nonce : vm.lastNonce
-      }
-
-      $http.post(url, data)
-      .success(function (data, status, headers, config) {
-        console.log("Response back");
-        console.log(data);
-        console.log(status);
-        console.log(headers);
-        console.log(config);
-      })
-      .error(function (data, status, header, config) {
-        console.log("Error");
-        console.log(data);
+      //Do an API call to determine if info works
+      cexService.GetBalance().then(function (data) {
+        if(data.error){
+          vm.authStatusMessage = "Invalid infomation entered - try again";
+          vm.authFailed = true;
+          console.log("Invalid info");
+        }else{
+          vm.authSuccess = true;
+          vm.authStatusMessage = "You are now authorized";
+        }
       });
-
-
     }
 
     return vm;
   }]);
-
-
-  function GetNonce(){
-    return Math.round((new Date()).getTime() / 1000);
-  }

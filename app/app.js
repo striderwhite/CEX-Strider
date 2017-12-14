@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('striderCEX', [
+var app = angular.module('striderCEX', [
   'ngRoute',
   'striderCEX.viewMain',
   'striderCEX.viewAuthenticate',
